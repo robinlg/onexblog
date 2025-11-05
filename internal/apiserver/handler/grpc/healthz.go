@@ -1,0 +1,24 @@
+// Copyright 2025 Robin Liu <robinliu27@163.com>. All rights reserved.
+// Use of this source code is governed by a MIT style
+// license that can be found in the LICENSE file. The original repo for
+// this file is https://github.com/robinlg/onexblog. The professional
+// version of this repository is https://github.com/robinlg/onexblog.
+
+package grpc
+
+import (
+	"context"
+	"time"
+
+	"google.golang.org/protobuf/types/known/emptypb"
+
+	apiv1 "github.com/robinlg/onexblog/pkg/api/apiserver/v1"
+)
+
+// Healthz 服务健康检查.
+func (h *Handler) Healthz(ctx context.Context, rq *emptypb.Empty) (*apiv1.HealthzResponse, error) {
+	return &apiv1.HealthzResponse{
+		Status:    apiv1.ServiceStatus_Healthy,
+		Timestamp: time.Now().Format(time.DateTime),
+	}, nil
+}
