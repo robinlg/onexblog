@@ -4,13 +4,15 @@ go 1.25.3
 
 require (
 	github.com/gosuri/uitable v0.0.4
-	github.com/robinlg/onexlib v0.0.0-20251105065400-5b9981bbd8d8
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.0
+	github.com/robinlg/onexlib v0.0.0-20251105094913-979fd5ff67e5
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.19.0
 	github.com/stretchr/testify v1.10.0
 	go.uber.org/automaxprocs v1.6.0
 	go.uber.org/zap v1.27.0
+	google.golang.org/genproto/googleapis/api v0.0.0-20250115164207-1a7da9e5054f
 	google.golang.org/grpc v1.69.4
 	google.golang.org/protobuf v1.36.3
 	k8s.io/apimachinery v0.32.1
