@@ -5,6 +5,7 @@ go 1.25.3
 require (
 	github.com/gin-contrib/pprof v1.4.0
 	github.com/gin-gonic/gin v1.10.0
+	github.com/google/uuid v1.6.0
 	github.com/gosuri/uitable v0.0.4
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.0
 	github.com/robinlg/onexlib v0.0.0-20251105094913-979fd5ff67e5

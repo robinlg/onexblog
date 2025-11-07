@@ -1,3 +1,9 @@
+// Copyright 2025 Robin Liu <robinliu27@163.com>. All rights reserved.
+// Use of this source code is governed by a MIT style
+// license that can be found in the LICENSE file. The original repo for
+// this file is https://github.com/robinlg/onexblog. The professional
+// version of this repository is https://github.com/robinlg/onexblog.
+
 package apiserver
 
 import (
@@ -5,6 +11,7 @@ import (
 
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	handler "github.com/robinlg/onexblog/internal/apiserver/handler/grpc"
+	mw "github.com/robinlg/onexblog/internal/pkg/middleware/grpc"
 	"github.com/robinlg/onexblog/internal/pkg/server"
 	apiv1 "github.com/robinlg/onexblog/pkg/api/apiserver/v1"
 	"google.golang.org/grpc"
@@ -28,9 +35,19 @@ var _ server.Server = (*grpcServer)(nil)
 //  2. 处理默认值或回退逻辑
 //  3. 表达灵活选项
 func (c *ServerConfig) NewGRPCServerOr() (server.Server, error) {
+	// 配置 gRPC 服务器选项，包括拦截器链
+	serverOptions := []grpc.ServerOption{
+		// 注意拦截器顺序
+		grpc.ChainUnaryInterceptor(
+			// 请求 ID 拦截器
+			mw.RequestIDInterceptor(),
+		),
+	}
+
 	// 创建 gRPC 服务器
 	grpcsrv, err := server.NewGRPCServer(
 		c.cfg.GRPCOptions,
+		serverOptions,
 		func(s grpc.ServiceRegistrar) {
 			apiv1.RegisterOnexBlogServer(s, handler.NewHandler())
 		},

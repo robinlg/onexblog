@@ -1,3 +1,9 @@
+// Copyright 2025 Robin Liu <robinliu27@163.com>. All rights reserved.
+// Use of this source code is governed by a MIT style
+// license that can be found in the LICENSE file. The original repo for
+// this file is https://github.com/robinlg/onexblog. The professional
+// version of this repository is https://github.com/robinlg/onexblog.
+
 package server
 
 import (
@@ -21,6 +27,7 @@ type GRPCServer struct {
 // NewGRPCServer 创建一个新的 GRPC 服务器实例.
 func NewGRPCServer(
 	grpcOptions *genericoptions.GRPCOptions,
+	serverOptions []grpc.ServerOption,
 	registerServer func(registrar grpc.ServiceRegistrar),
 ) (*GRPCServer, error) {
 	lis, err := net.Listen("tcp", grpcOptions.Addr)
@@ -29,7 +36,7 @@ func NewGRPCServer(
 		return nil, err
 	}
 
-	grpcsrv := grpc.NewServer()
+	grpcsrv := grpc.NewServer(serverOptions...)
 
 	registerServer(grpcsrv)
 	registerHealthServer(grpcsrv)
