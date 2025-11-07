@@ -43,7 +43,7 @@ type ServerOptions struct {
 // NewServerOptions 创建带有默认值的 ServerOptions 实例.
 func NewServerOptions() *ServerOptions {
 	opts := &ServerOptions{
-		ServerMode:  apiserver.GRPCGatewayServerMode,
+		ServerMode:  apiserver.GinServerMode,
 		JWTKey:      "Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5",
 		Expiration:  2 * time.Hour,
 		HTTPOptions: genericoptions.NewHTTPOptions(),
