@@ -14,6 +14,8 @@ type (
 	userIDKey struct{}
 	// requestIDKey 定义请求 ID 的上下文键.
 	requestIDKey struct{}
+	// usernameKey 定义用户名的上下文键.
+	usernameKey struct{}
 )
 
 // WithUserID 将用户 ID 存放到上下文中.
@@ -36,4 +38,15 @@ func WithRequestID(ctx context.Context, requestID string) context.Context {
 func RequestID(ctx context.Context) string {
 	requestID, _ := ctx.Value(requestIDKey{}).(string)
 	return requestID
+}
+
+// WithUsername 将用户名存放到上下文中.
+func WithUsername(ctx context.Context, username string) context.Context {
+	return context.WithValue(ctx, usernameKey{}, username)
+}
+
+// User 从上下文中提取用户名.
+func Username(ctx context.Context) string {
+	username, _ := ctx.Value(usernameKey{}).(string)
+	return username
 }
