@@ -26,4 +26,7 @@ var (
 		Reason:  "InvalidArgument.PasswordInvalid",
 		Message: "Password is incorrect.",
 	}
+
+	// ErrUserNotFound 表示未找到指定用户.
+	ErrUserNotFound = &errorsx.ErrorX{Code: http.StatusNotFound, Reason: "NotFound.UserNotFound", Message: "User not found."}
 )

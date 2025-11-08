@@ -8,7 +8,7 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/gosuri/uitable v0.0.4
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.0
-	github.com/robinlg/onexlib v0.0.0-20251108033047-60cce53203ab
+	github.com/robinlg/onexlib v0.0.0-20251108063048-cbd9bfda81e3
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.19.0
