@@ -49,7 +49,7 @@ func (c *ServerConfig) NewGRPCServerOr() (server.Server, error) {
 		c.cfg.GRPCOptions,
 		serverOptions,
 		func(s grpc.ServiceRegistrar) {
-			apiv1.RegisterOnexBlogServer(s, handler.NewHandler())
+			apiv1.RegisterOnexBlogServer(s, handler.NewHandler(c.biz))
 		},
 	)
 	if err != nil {

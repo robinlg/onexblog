@@ -19,6 +19,9 @@ var (
 	// ErrInternal 表示所有未知的服务器端错误.
 	ErrInternal = errorsx.ErrInternal
 
+	// ErrPageNotFound 表示页面未找到.
+	ErrPageNotFound = &errorsx.ErrorX{Code: http.StatusNotFound, Reason: "NotFound.PageNotFound", Message: "Page not found."}
+
 	// ErrDBRead 表示数据库读取失败.
 	ErrDBRead = &errorsx.ErrorX{Code: http.StatusInternalServerError, Reason: "InternalError.DBRead", Message: "Database read failure."}
 

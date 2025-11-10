@@ -70,6 +70,7 @@ message DeletePostResponse {
 // GetPostRequest 表示获取文章请求
 message GetPostRequest {
   // postID 表示要获取的文章 ID
+  // @gotags: uri:"postID"
   string postID = 1;
 }
 

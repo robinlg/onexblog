@@ -6,7 +6,11 @@
 
 package biz
 
-import "github.com/robinlg/onexblog/internal/apiserver/store"
+import (
+	postv1 "github.com/robinlg/onexblog/internal/apiserver/biz/v1/post"
+	userv1 "github.com/robinlg/onexblog/internal/apiserver/biz/v1/user"
+	"github.com/robinlg/onexblog/internal/apiserver/store"
+)
 
 //go:generate mockgen -destination mock_biz.go -package biz github.com/onexstack/miniblog/internal/apiserver/biz IBiz
 

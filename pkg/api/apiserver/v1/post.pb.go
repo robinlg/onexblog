@@ -410,7 +410,8 @@ func (*DeletePostResponse) Descriptor() ([]byte, []int) {
 type GetPostRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// postID 表示要获取的文章 ID
-	PostID        string `protobuf:"bytes,1,opt,name=postID,proto3" json:"postID,omitempty"`
+	// @gotags: uri:"postID"
+	PostID        string `protobuf:"bytes,1,opt,name=postID,proto3" json:"postID,omitempty" uri:"postID"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }

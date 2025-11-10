@@ -693,7 +693,8 @@ func (*UpdateUserResponse) Descriptor() ([]byte, []int) {
 type DeleteUserRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// userID 表示用户 ID
-	UserID        string `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID,omitempty"`
+	// @gotags: uri:"userID"
+	UserID        string `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID,omitempty" uri:"userID"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -776,7 +777,8 @@ func (*DeleteUserResponse) Descriptor() ([]byte, []int) {
 type GetUserRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// userID 表示用户 ID
-	UserID        string `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID,omitempty"`
+	// @gotags: uri:"userID"
+	UserID        string `protobuf:"bytes,1,opt,name=userID,proto3" json:"userID,omitempty" uri:"userID"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }

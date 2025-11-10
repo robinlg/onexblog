@@ -117,6 +117,7 @@ message UpdateUserResponse {
 // DeleteUserRequest 表示删除用户请求
 message DeleteUserRequest {
   // userID 表示用户 ID
+  // @gotags: uri:"userID"
   string userID = 1;
 }
 
@@ -127,6 +128,7 @@ message DeleteUserResponse {
 // GetUserRequest 表示获取用户请求
 message GetUserRequest {
   // userID 表示用户 ID
+  // @gotags: uri:"userID"
   string userID = 1;
 }
 

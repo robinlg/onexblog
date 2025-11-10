@@ -9,7 +9,7 @@ require (
 	github.com/gosuri/uitable v0.0.4
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.0
 	github.com/jinzhu/copier v0.4.0
-	github.com/robinlg/onexlib v0.0.0-20251108073456-7948ca16f932
+	github.com/robinlg/onexlib v0.0.0-20251110084623-46a27b65d66d
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.19.0
