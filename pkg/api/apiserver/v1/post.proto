@@ -11,7 +11,7 @@ package v1;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/onexstack/miniblog/pkg/api/apiserver/v1";
+option go_package = "github.com/robinlg/onexblog/pkg/api/apiserver/v1";
 
 // Post 表示博客文章
 message Post {

@@ -19,6 +19,12 @@ var (
 	// ErrInternal 表示所有未知的服务器端错误.
 	ErrInternal = errorsx.ErrInternal
 
+	// ErrInvalidArgument 表示参数验证失败.
+	ErrInvalidArgument = errorsx.ErrInvalidArgument
+
+	// ErrPermissionDenied 表示请求没有权限.
+	ErrPermissionDenied = errorsx.ErrPermissionDenied
+
 	// ErrPageNotFound 表示页面未找到.
 	ErrPageNotFound = &errorsx.ErrorX{Code: http.StatusNotFound, Reason: "NotFound.PageNotFound", Message: "Page not found."}
 

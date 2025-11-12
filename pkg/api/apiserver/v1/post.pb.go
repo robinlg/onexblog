@@ -658,7 +658,7 @@ const file_apiserver_v1_post_proto_rawDesc = "" +
 	"\x10ListPostResponse\x12\x1f\n" +
 	"\vtotal_count\x18\x01 \x01(\x03R\n" +
 	"totalCount\x12\x1e\n" +
-	"\x05posts\x18\x02 \x03(\v2\b.v1.PostR\x05postsB4Z2github.com/onexstack/miniblog/pkg/api/apiserver/v1b\x06proto3"
+	"\x05posts\x18\x02 \x03(\v2\b.v1.PostR\x05postsB2Z0github.com/robinlg/onexblog/pkg/api/apiserver/v1b\x06proto3"
 
 var (
 	file_apiserver_v1_post_proto_rawDescOnce sync.Once

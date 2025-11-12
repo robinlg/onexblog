@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"github.com/robinlg/onexblog/internal/apiserver/biz"
+	"github.com/robinlg/onexblog/internal/apiserver/pkg/validation"
 	"github.com/robinlg/onexblog/internal/apiserver/store"
 	"github.com/robinlg/onexblog/internal/pkg/contextx"
 	"github.com/robinlg/onexblog/internal/pkg/log"
@@ -64,6 +65,7 @@ type UnionServer struct {
 type ServerConfig struct {
 	cfg *Config
 	biz biz.IBiz
+	val *validation.Validator
 }
 
 // NewUnionServer 根据配置创建联合服务器.
@@ -139,6 +141,7 @@ func (cfg *Config) NewServerConfig() (*ServerConfig, error) {
 	return &ServerConfig{
 		cfg: cfg,
 		biz: biz.NewBiz(store),
+		val: validation.New(store),
 	}, nil
 }
 

@@ -5,11 +5,13 @@ go 1.25.3
 require (
 	github.com/gin-contrib/pprof v1.4.0
 	github.com/gin-gonic/gin v1.10.0
+	github.com/go-ozzo/ozzo-validation/v4 v4.3.0
 	github.com/google/uuid v1.6.0
 	github.com/gosuri/uitable v0.0.4
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.0
 	github.com/jinzhu/copier v0.4.0
-	github.com/robinlg/onexlib v0.0.0-20251110084623-46a27b65d66d
+	github.com/onexstack/protoc-gen-defaults v0.0.2
+	github.com/robinlg/onexlib v0.0.0-20251112075658-3990e2472545
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.19.0
@@ -24,9 +26,11 @@ require (
 	gorm.io/gen v0.3.23
 	gorm.io/gorm v1.25.12
 	k8s.io/apimachinery v0.32.1
+	k8s.io/utils v0.0.0-20241210054802-24370beab758
 )
 
 require (
+	github.com/asaskevich/govalidator v0.0.0-20200108200545-475eaeb16496 // indirect
 	github.com/bytedance/sonic v1.11.6 // indirect
 	github.com/bytedance/sonic/loader v0.1.1 // indirect
 	github.com/clipperhouse/uax29/v2 v2.2.0 // indirect
@@ -38,6 +42,7 @@ require (
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-kratos/kratos/v2 v2.8.3 // indirect
+	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.20.0 // indirect
@@ -59,6 +64,7 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.3 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
+	github.com/prometheus/common v0.29.0 // indirect
 	github.com/sagikazarmark/locafero v0.4.0 // indirect
 	github.com/sagikazarmark/slog-shim v0.1.0 // indirect
 	github.com/sourcegraph/conc v0.3.0 // indirect
@@ -84,5 +90,5 @@ require (
 	gorm.io/driver/mysql v1.5.7 // indirect
 	gorm.io/hints v1.1.0 // indirect
 	gorm.io/plugin/dbresolver v1.5.3 // indirect
-	k8s.io/utils v0.0.0-20241210054802-24370beab758 // indirect
+	k8s.io/klog/v2 v2.130.1 // indirect
 )

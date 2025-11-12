@@ -169,10 +169,6 @@ func GenerateOnexBlogModels(g *gen.Generator) {
 			tag.Set("uniqueIndex", "idx_user_username")
 			return tag
 		}),
-		gen.FieldGORMTag("userID", func(tag field.GormTag) field.GormTag {
-			tag.Set("uniqueIndex", "idx_user_userID")
-			return tag
-		}),
 		gen.FieldGORMTag("phone", func(tag field.GormTag) field.GormTag {
 			tag.Set("uniqueIndex", "idx_user_phone")
 			return tag

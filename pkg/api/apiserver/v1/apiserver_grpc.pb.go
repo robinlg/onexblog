@@ -26,7 +26,20 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	OnexBlog_Healthz_FullMethodName = "/v1.OnexBlog/Healthz"
+	OnexBlog_Healthz_FullMethodName        = "/v1.OnexBlog/Healthz"
+	OnexBlog_Login_FullMethodName          = "/v1.OnexBlog/Login"
+	OnexBlog_RefreshToken_FullMethodName   = "/v1.OnexBlog/RefreshToken"
+	OnexBlog_ChangePassword_FullMethodName = "/v1.OnexBlog/ChangePassword"
+	OnexBlog_CreateUser_FullMethodName     = "/v1.OnexBlog/CreateUser"
+	OnexBlog_UpdateUser_FullMethodName     = "/v1.OnexBlog/UpdateUser"
+	OnexBlog_DeleteUser_FullMethodName     = "/v1.OnexBlog/DeleteUser"
+	OnexBlog_GetUser_FullMethodName        = "/v1.OnexBlog/GetUser"
+	OnexBlog_ListUser_FullMethodName       = "/v1.OnexBlog/ListUser"
+	OnexBlog_CreatePost_FullMethodName     = "/v1.OnexBlog/CreatePost"
+	OnexBlog_UpdatePost_FullMethodName     = "/v1.OnexBlog/UpdatePost"
+	OnexBlog_DeletePost_FullMethodName     = "/v1.OnexBlog/DeletePost"
+	OnexBlog_GetPost_FullMethodName        = "/v1.OnexBlog/GetPost"
+	OnexBlog_ListPost_FullMethodName       = "/v1.OnexBlog/ListPost"
 )
 
 // OnexBlogClient is the client API for OnexBlog service.
@@ -37,6 +50,32 @@ const (
 type OnexBlogClient interface {
 	// Healthz 健康检查
 	Healthz(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*HealthzResponse, error)
+	// Login 用户登录
+	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
+	// RefreshToken 刷新令牌
+	RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*RefreshTokenResponse, error)
+	// ChangePassword 修改密码
+	ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*ChangePasswordResponse, error)
+	// CreateUser 创建用户
+	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
+	// UpdateUser 更新用户信息
+	UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UpdateUserResponse, error)
+	// DeleteUser 删除用户
+	DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*DeleteUserResponse, error)
+	// GetUser 获取用户信息
+	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
+	// ListUser 列出所有用户
+	ListUser(ctx context.Context, in *ListUserRequest, opts ...grpc.CallOption) (*ListUserResponse, error)
+	// CreatePost 创建文章
+	CreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*CreatePostResponse, error)
+	// UpdatePost 更新文章
+	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*UpdatePostResponse, error)
+	// DeletePost 删除文章
+	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*DeletePostResponse, error)
+	// GetPost 获取文章信息
+	GetPost(ctx context.Context, in *GetPostRequest, opts ...grpc.CallOption) (*GetPostResponse, error)
+	// ListPost 列出所有文章
+	ListPost(ctx context.Context, in *ListPostRequest, opts ...grpc.CallOption) (*ListPostResponse, error)
 }
 
 type onexBlogClient struct {
@@ -57,6 +96,136 @@ func (c *onexBlogClient) Healthz(ctx context.Context, in *emptypb.Empty, opts ..
 	return out, nil
 }
 
+func (c *onexBlogClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(LoginResponse)
+	err := c.cc.Invoke(ctx, OnexBlog_Login_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onexBlogClient) RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*RefreshTokenResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RefreshTokenResponse)
+	err := c.cc.Invoke(ctx, OnexBlog_RefreshToken_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onexBlogClient) ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*ChangePasswordResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ChangePasswordResponse)
+	err := c.cc.Invoke(ctx, OnexBlog_ChangePassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onexBlogClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateUserResponse)
+	err := c.cc.Invoke(ctx, OnexBlog_CreateUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onexBlogClient) UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UpdateUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateUserResponse)
+	err := c.cc.Invoke(ctx, OnexBlog_UpdateUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onexBlogClient) DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*DeleteUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteUserResponse)
+	err := c.cc.Invoke(ctx, OnexBlog_DeleteUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onexBlogClient) GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserResponse)
+	err := c.cc.Invoke(ctx, OnexBlog_GetUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onexBlogClient) ListUser(ctx context.Context, in *ListUserRequest, opts ...grpc.CallOption) (*ListUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListUserResponse)
+	err := c.cc.Invoke(ctx, OnexBlog_ListUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onexBlogClient) CreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*CreatePostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreatePostResponse)
+	err := c.cc.Invoke(ctx, OnexBlog_CreatePost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onexBlogClient) UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*UpdatePostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdatePostResponse)
+	err := c.cc.Invoke(ctx, OnexBlog_UpdatePost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onexBlogClient) DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*DeletePostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeletePostResponse)
+	err := c.cc.Invoke(ctx, OnexBlog_DeletePost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onexBlogClient) GetPost(ctx context.Context, in *GetPostRequest, opts ...grpc.CallOption) (*GetPostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetPostResponse)
+	err := c.cc.Invoke(ctx, OnexBlog_GetPost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *onexBlogClient) ListPost(ctx context.Context, in *ListPostRequest, opts ...grpc.CallOption) (*ListPostResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListPostResponse)
+	err := c.cc.Invoke(ctx, OnexBlog_ListPost_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OnexBlogServer is the server API for OnexBlog service.
 // All implementations must embed UnimplementedOnexBlogServer
 // for forward compatibility.
@@ -65,6 +234,32 @@ func (c *onexBlogClient) Healthz(ctx context.Context, in *emptypb.Empty, opts ..
 type OnexBlogServer interface {
 	// Healthz 健康检查
 	Healthz(context.Context, *emptypb.Empty) (*HealthzResponse, error)
+	// Login 用户登录
+	Login(context.Context, *LoginRequest) (*LoginResponse, error)
+	// RefreshToken 刷新令牌
+	RefreshToken(context.Context, *RefreshTokenRequest) (*RefreshTokenResponse, error)
+	// ChangePassword 修改密码
+	ChangePassword(context.Context, *ChangePasswordRequest) (*ChangePasswordResponse, error)
+	// CreateUser 创建用户
+	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
+	// UpdateUser 更新用户信息
+	UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
+	// DeleteUser 删除用户
+	DeleteUser(context.Context, *DeleteUserRequest) (*DeleteUserResponse, error)
+	// GetUser 获取用户信息
+	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
+	// ListUser 列出所有用户
+	ListUser(context.Context, *ListUserRequest) (*ListUserResponse, error)
+	// CreatePost 创建文章
+	CreatePost(context.Context, *CreatePostRequest) (*CreatePostResponse, error)
+	// UpdatePost 更新文章
+	UpdatePost(context.Context, *UpdatePostRequest) (*UpdatePostResponse, error)
+	// DeletePost 删除文章
+	DeletePost(context.Context, *DeletePostRequest) (*DeletePostResponse, error)
+	// GetPost 获取文章信息
+	GetPost(context.Context, *GetPostRequest) (*GetPostResponse, error)
+	// ListPost 列出所有文章
+	ListPost(context.Context, *ListPostRequest) (*ListPostResponse, error)
 	mustEmbedUnimplementedOnexBlogServer()
 }
 
@@ -77,6 +272,45 @@ type UnimplementedOnexBlogServer struct{}
 
 func (UnimplementedOnexBlogServer) Healthz(context.Context, *emptypb.Empty) (*HealthzResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Healthz not implemented")
+}
+func (UnimplementedOnexBlogServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
+}
+func (UnimplementedOnexBlogServer) RefreshToken(context.Context, *RefreshTokenRequest) (*RefreshTokenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RefreshToken not implemented")
+}
+func (UnimplementedOnexBlogServer) ChangePassword(context.Context, *ChangePasswordRequest) (*ChangePasswordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChangePassword not implemented")
+}
+func (UnimplementedOnexBlogServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
+}
+func (UnimplementedOnexBlogServer) UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUser not implemented")
+}
+func (UnimplementedOnexBlogServer) DeleteUser(context.Context, *DeleteUserRequest) (*DeleteUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
+}
+func (UnimplementedOnexBlogServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+}
+func (UnimplementedOnexBlogServer) ListUser(context.Context, *ListUserRequest) (*ListUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListUser not implemented")
+}
+func (UnimplementedOnexBlogServer) CreatePost(context.Context, *CreatePostRequest) (*CreatePostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePost not implemented")
+}
+func (UnimplementedOnexBlogServer) UpdatePost(context.Context, *UpdatePostRequest) (*UpdatePostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePost not implemented")
+}
+func (UnimplementedOnexBlogServer) DeletePost(context.Context, *DeletePostRequest) (*DeletePostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePost not implemented")
+}
+func (UnimplementedOnexBlogServer) GetPost(context.Context, *GetPostRequest) (*GetPostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPost not implemented")
+}
+func (UnimplementedOnexBlogServer) ListPost(context.Context, *ListPostRequest) (*ListPostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPost not implemented")
 }
 func (UnimplementedOnexBlogServer) mustEmbedUnimplementedOnexBlogServer() {}
 func (UnimplementedOnexBlogServer) testEmbeddedByValue()                  {}
@@ -117,6 +351,240 @@ func _OnexBlog_Healthz_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OnexBlog_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LoginRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnexBlogServer).Login(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OnexBlog_Login_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnexBlogServer).Login(ctx, req.(*LoginRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnexBlog_RefreshToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RefreshTokenRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnexBlogServer).RefreshToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OnexBlog_RefreshToken_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnexBlogServer).RefreshToken(ctx, req.(*RefreshTokenRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnexBlog_ChangePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChangePasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnexBlogServer).ChangePassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OnexBlog_ChangePassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnexBlogServer).ChangePassword(ctx, req.(*ChangePasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnexBlog_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnexBlogServer).CreateUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OnexBlog_CreateUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnexBlogServer).CreateUser(ctx, req.(*CreateUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnexBlog_UpdateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnexBlogServer).UpdateUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OnexBlog_UpdateUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnexBlogServer).UpdateUser(ctx, req.(*UpdateUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnexBlog_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnexBlogServer).DeleteUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OnexBlog_DeleteUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnexBlogServer).DeleteUser(ctx, req.(*DeleteUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnexBlog_GetUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnexBlogServer).GetUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OnexBlog_GetUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnexBlogServer).GetUser(ctx, req.(*GetUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnexBlog_ListUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnexBlogServer).ListUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OnexBlog_ListUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnexBlogServer).ListUser(ctx, req.(*ListUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnexBlog_CreatePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreatePostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnexBlogServer).CreatePost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OnexBlog_CreatePost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnexBlogServer).CreatePost(ctx, req.(*CreatePostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnexBlog_UpdatePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnexBlogServer).UpdatePost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OnexBlog_UpdatePost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnexBlogServer).UpdatePost(ctx, req.(*UpdatePostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnexBlog_DeletePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeletePostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnexBlogServer).DeletePost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OnexBlog_DeletePost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnexBlogServer).DeletePost(ctx, req.(*DeletePostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnexBlog_GetPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnexBlogServer).GetPost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OnexBlog_GetPost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnexBlogServer).GetPost(ctx, req.(*GetPostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OnexBlog_ListPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListPostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OnexBlogServer).ListPost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OnexBlog_ListPost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OnexBlogServer).ListPost(ctx, req.(*ListPostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // OnexBlog_ServiceDesc is the grpc.ServiceDesc for OnexBlog service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -127,6 +595,58 @@ var OnexBlog_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Healthz",
 			Handler:    _OnexBlog_Healthz_Handler,
+		},
+		{
+			MethodName: "Login",
+			Handler:    _OnexBlog_Login_Handler,
+		},
+		{
+			MethodName: "RefreshToken",
+			Handler:    _OnexBlog_RefreshToken_Handler,
+		},
+		{
+			MethodName: "ChangePassword",
+			Handler:    _OnexBlog_ChangePassword_Handler,
+		},
+		{
+			MethodName: "CreateUser",
+			Handler:    _OnexBlog_CreateUser_Handler,
+		},
+		{
+			MethodName: "UpdateUser",
+			Handler:    _OnexBlog_UpdateUser_Handler,
+		},
+		{
+			MethodName: "DeleteUser",
+			Handler:    _OnexBlog_DeleteUser_Handler,
+		},
+		{
+			MethodName: "GetUser",
+			Handler:    _OnexBlog_GetUser_Handler,
+		},
+		{
+			MethodName: "ListUser",
+			Handler:    _OnexBlog_ListUser_Handler,
+		},
+		{
+			MethodName: "CreatePost",
+			Handler:    _OnexBlog_CreatePost_Handler,
+		},
+		{
+			MethodName: "UpdatePost",
+			Handler:    _OnexBlog_UpdatePost_Handler,
+		},
+		{
+			MethodName: "DeletePost",
+			Handler:    _OnexBlog_DeletePost_Handler,
+		},
+		{
+			MethodName: "GetPost",
+			Handler:    _OnexBlog_GetPost_Handler,
+		},
+		{
+			MethodName: "ListPost",
+			Handler:    _OnexBlog_ListPost_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

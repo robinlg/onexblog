@@ -7,6 +7,8 @@
 package model
 
 import (
+	"time"
+
 	"github.com/robinlg/onexblog/internal/pkg/rid"
 	"github.com/robinlg/onexblog/pkg/auth"
 	"gorm.io/gorm"
@@ -27,6 +29,9 @@ func (m *UserM) BeforeCreate(tx *gorm.DB) error {
 	if err != nil {
 		return err
 	}
+	now := time.Now()
+	m.CreatedAt = now
+	m.UpdatedAt = now
 
 	return nil
 }
@@ -36,4 +41,13 @@ func (m *UserM) AfterCreate(tx *gorm.DB) error {
 	m.UserID = rid.UserID.New(uint64(m.ID))
 
 	return tx.Save(m).Error
+}
+
+// BeforeCreate 更新创建时间.
+func (m *PostM) BeforeCreate(tx *gorm.DB) error {
+	now := time.Now()
+	m.CreatedAt = now
+	m.UpdatedAt = now
+
+	return nil
 }

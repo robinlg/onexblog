@@ -1040,7 +1040,7 @@ const file_apiserver_v1_user_proto_rawDesc = "" +
 	"\n" +
 	"totalCount\x18\x01 \x01(\x03R\n" +
 	"totalCount\x12\x1e\n" +
-	"\x05users\x18\x02 \x03(\v2\b.v1.UserR\x05usersB7Z5github.com/onexstack/miniblog/pkg/api/apiserver/v1;v1b\x06proto3"
+	"\x05users\x18\x02 \x03(\v2\b.v1.UserR\x05usersB5Z3github.com/robinlg/onexblog/pkg/api/apiserver/v1;v1b\x06proto3"
 
 var (
 	file_apiserver_v1_user_proto_rawDescOnce sync.Once

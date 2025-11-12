@@ -116,7 +116,6 @@ CREATE TABLE `user` (
   `createdAt` datetime NOT NULL DEFAULT current_timestamp() COMMENT '用户创建时间',
   `updatedAt` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT '用户最后修改时间',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `user.userID` (`userID`),
   UNIQUE KEY `user.username` (`username`),
   UNIQUE KEY `user.phone` (`phone`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci COMMENT='用户表';
