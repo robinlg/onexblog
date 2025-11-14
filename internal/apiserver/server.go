@@ -14,10 +14,12 @@ import (
 	"time"
 
 	"github.com/robinlg/onexblog/internal/apiserver/biz"
+	"github.com/robinlg/onexblog/internal/apiserver/model"
 	"github.com/robinlg/onexblog/internal/apiserver/pkg/validation"
 	"github.com/robinlg/onexblog/internal/apiserver/store"
 	"github.com/robinlg/onexblog/internal/pkg/contextx"
 	"github.com/robinlg/onexblog/internal/pkg/log"
+	mw "github.com/robinlg/onexblog/internal/pkg/middleware/grpc"
 	"github.com/robinlg/onexblog/internal/pkg/server"
 	genericoptions "github.com/robinlg/onexlib/pkg/options"
 	"github.com/robinlg/onexlib/pkg/store/where"
@@ -63,9 +65,10 @@ type UnionServer struct {
 
 // ServerConfig 包含服务器的核心依赖和配置.
 type ServerConfig struct {
-	cfg *Config
-	biz biz.IBiz
-	val *validation.Validator
+	cfg       *Config
+	biz       biz.IBiz
+	val       *validation.Validator
+	retriever mw.UserRetriever
 }
 
 // NewUnionServer 根据配置创建联合服务器.
@@ -139,13 +142,24 @@ func (cfg *Config) NewServerConfig() (*ServerConfig, error) {
 	store := store.NewStore(db)
 
 	return &ServerConfig{
-		cfg: cfg,
-		biz: biz.NewBiz(store),
-		val: validation.New(store),
+		cfg:       cfg,
+		biz:       biz.NewBiz(store),
+		val:       validation.New(store),
+		retriever: &UserRetriever{store: store},
 	}, nil
 }
 
 // NewDB 创建一个 *gorm.DB 实例.
 func (cfg *Config) NewDB() (*gorm.DB, error) {
 	return cfg.MySQLOptions.NewDB()
+}
+
+// UserRetriever 定义一个用户数据获取器. 用来获取用户信息.
+type UserRetriever struct {
+	store store.IStore
+}
+
+// GetUser 根据用户 ID 获取用户信息.
+func (r *UserRetriever) GetUser(ctx context.Context, userID string) (*model.UserM, error) {
+	return r.store.User().Get(ctx, where.F("userID", userID))
 }

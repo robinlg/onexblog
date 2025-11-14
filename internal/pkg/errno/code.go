@@ -22,11 +22,20 @@ var (
 	// ErrInvalidArgument 表示参数验证失败.
 	ErrInvalidArgument = errorsx.ErrInvalidArgument
 
+	// ErrUnauthenticated 表示认证失败.
+	ErrUnauthenticated = errorsx.ErrUnauthenticated
+
 	// ErrPermissionDenied 表示请求没有权限.
 	ErrPermissionDenied = errorsx.ErrPermissionDenied
 
 	// ErrPageNotFound 表示页面未找到.
 	ErrPageNotFound = &errorsx.ErrorX{Code: http.StatusNotFound, Reason: "NotFound.PageNotFound", Message: "Page not found."}
+
+	// ErrSignToken 表示签发 JWT Token 时出错.
+	ErrSignToken = &errorsx.ErrorX{Code: http.StatusUnauthorized, Reason: "Unauthenticated.SignToken", Message: "Error occurred while signing the JSON web token."}
+
+	// ErrTokenInvalid 表示 JWT Token 格式无效.
+	ErrTokenInvalid = &errorsx.ErrorX{Code: http.StatusUnauthorized, Reason: "Unauthenticated.TokenInvalid", Message: "Token was invalid."}
 
 	// ErrDBRead 表示数据库读取失败.
 	ErrDBRead = &errorsx.ErrorX{Code: http.StatusInternalServerError, Reason: "InternalError.DBRead", Message: "Database read failure."}

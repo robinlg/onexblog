@@ -18,6 +18,7 @@ import (
 	"github.com/robinlg/onexblog/internal/pkg/known"
 	"github.com/robinlg/onexblog/internal/pkg/log"
 	"github.com/robinlg/onexblog/pkg/auth"
+	"github.com/robinlg/onexblog/pkg/token"
 	"github.com/robinlg/onexlib/pkg/store/where"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/protobuf/types/known/timestamppb"
@@ -73,9 +74,13 @@ func (b *userBiz) Login(ctx context.Context, rq *apiv1.LoginRequest) (*apiv1.Log
 		return nil, errno.ErrPasswordInvalid
 	}
 
-	// TODO：实现 Token 签发逻辑
+	// 如果匹配成功，说明登录成功，签发 token 并返回
+	tokenStr, expireAt, err := token.Sign(userM.UserID)
+	if err != nil {
+		log.W(ctx).Errorw("Failed to sign token", "err", err)
+	}
 
-	return &apiv1.LoginResponse{Token: "<placeholder>", ExpireAt: timestamppb.New(time.Now().Add(2 * time.Hour))}, nil
+	return &apiv1.LoginResponse{Token: tokenStr, ExpireAt: timestamppb.New(expireAt)}, nil
 }
 
 // RefreshToken 用于刷新用户的身份验证令牌.
