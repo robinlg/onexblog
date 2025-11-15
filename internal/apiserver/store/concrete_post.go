@@ -49,7 +49,7 @@ func newConcretePostStore(store *datastore) *concretePostStore {
 func (s *concretePostStore) Create(ctx context.Context, obj *model.PostM) error {
 	if err := s.store.DB(ctx).Create(&obj).Error; err != nil {
 		log.Errorw("Failed to insert post into database", "err", err, "post", obj)
-		return errno.ErrDBWrite.WithMessage(err.Error())
+		return errno.ErrDBWrite.WithMessage("%v", err)
 	}
 
 	return nil
@@ -59,7 +59,7 @@ func (s *concretePostStore) Create(ctx context.Context, obj *model.PostM) error 
 func (s *concretePostStore) Update(ctx context.Context, obj *model.PostM) error {
 	if err := s.store.DB(ctx).Save(obj).Error; err != nil {
 		log.Errorw("Failed to update post in database", "err", err, "post", obj)
-		return errno.ErrDBWrite.WithMessage(err.Error())
+		return errno.ErrDBWrite.WithMessage("%v", err)
 	}
 
 	return nil
@@ -70,7 +70,7 @@ func (s *concretePostStore) Delete(ctx context.Context, opts *where.Options) err
 	err := s.store.DB(ctx, opts).Delete(new(model.PostM)).Error
 	if err != nil && !errors.Is(err, gorm.ErrRecordNotFound) {
 		log.Errorw("Failed to delete post from database", "err", err, "conditions", opts)
-		return errno.ErrDBWrite.WithMessage(err.Error())
+		return errno.ErrDBWrite.WithMessage("%v", err)
 	}
 
 	return nil
@@ -84,7 +84,7 @@ func (s *concretePostStore) Get(ctx context.Context, opts *where.Options) (*mode
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, errno.ErrPostNotFound
 		}
-		return nil, errno.ErrDBRead.WithMessage(err.Error())
+		return nil, errno.ErrDBRead.WithMessage("%v", err)
 	}
 
 	return &obj, nil
@@ -96,7 +96,7 @@ func (s *concretePostStore) List(ctx context.Context, opts *where.Options) (coun
 	err = s.store.DB(ctx, opts).Order("id desc").Find(&ret).Offset(-1).Limit(-1).Count(&count).Error
 	if err != nil {
 		log.Errorw("Failed to list posts from database", "err", err, "conditions", opts)
-		err = errno.ErrDBRead.WithMessage(err.Error())
+		err = errno.ErrDBRead.WithMessage("%v", err)
 	}
 	return
 }
