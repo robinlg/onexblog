@@ -13,9 +13,10 @@ import (
 	"math/rand"
 	"time"
 
-	apiv1 "github.com/robinlg/onexblog/pkg/api/apiserver/v1"
 	"google.golang.org/grpc/metadata"
 	"k8s.io/utils/ptr"
+
+	apiv1 "github.com/robinlg/onexblog/pkg/api/apiserver/v1"
 )
 
 // ExampleCreateUserRequest 创建一个示例的 CreateUserRequest 对象
@@ -56,7 +57,7 @@ func GeneratePhoneNumber() string {
 // MustWithAdminToken 使用管理员 Token 创建带有授权信息的上下文
 // 参数：
 // - ctx: 上下文对象
-// - client: MiniBlogClient 客户端，用于调用登录接口
+// - client: OnexBlogClient 客户端，用于调用登录接口
 // 返回：
 // - 一个附加了管理员 Token 的上下文对象
 func MustWithAdminToken(ctx context.Context, client apiv1.OnexBlogClient) context.Context {

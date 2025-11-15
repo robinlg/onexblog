@@ -11,8 +11,9 @@ import (
 
 	"gorm.io/gorm"
 
+	auth "github.com/robinlg/onexlib/pkg/authn"
+
 	"github.com/robinlg/onexblog/internal/pkg/rid"
-	"github.com/robinlg/onexlib/pkg/authn"
 )
 
 // AfterCreate 在创建数据库记录之后生成 postID.

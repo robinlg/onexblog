@@ -6,7 +6,7 @@
 
 package store
 
-//go:generate mockgen -destination mock_store.go -package store github.com/robinlg/onexblog/internal/miniblog/store IStore,UserStore,PostStore,ConcretePostStore
+//go:generate mockgen -destination mock_store.go -package store github.com/robinlg/onexblog/internal/onexblog/store IStore,UserStore,PostStore,ConcretePostStore
 
 import (
 	"context"

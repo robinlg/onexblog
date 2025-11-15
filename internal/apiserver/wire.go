@@ -11,12 +11,13 @@ package apiserver
 
 import (
 	"github.com/google/wire"
+	auth "github.com/robinlg/onexlib/pkg/authz"
+
 	"github.com/robinlg/onexblog/internal/apiserver/biz"
 	"github.com/robinlg/onexblog/internal/apiserver/pkg/validation"
 	"github.com/robinlg/onexblog/internal/apiserver/store"
 	ginmw "github.com/robinlg/onexblog/internal/pkg/middleware/gin"
 	grpcmw "github.com/robinlg/onexblog/internal/pkg/middleware/grpc"
-	"github.com/robinlg/onexlib/pkg/authz"
 
 	"github.com/robinlg/onexblog/internal/pkg/server"
 )

@@ -10,8 +10,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/robinlg/onexblog/internal/pkg/rid"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/robinlg/onexblog/internal/pkg/rid"
 )
 
 func TestResourceID_String(t *testing.T) {

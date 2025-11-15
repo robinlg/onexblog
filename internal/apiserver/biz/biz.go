@@ -8,13 +8,14 @@ package biz
 
 import (
 	"github.com/google/wire"
+	auth "github.com/robinlg/onexlib/pkg/authz"
+
 	postv1 "github.com/robinlg/onexblog/internal/apiserver/biz/v1/post"
 	userv1 "github.com/robinlg/onexblog/internal/apiserver/biz/v1/user"
 	"github.com/robinlg/onexblog/internal/apiserver/store"
-	"github.com/robinlg/onexlib/pkg/authz"
 )
 
-//go:generate mockgen -destination mock_biz.go -package biz github.com/onexstack/miniblog/internal/apiserver/biz IBiz
+//go:generate mockgen -destination mock_biz.go -package biz github.com/robinlg/onexblog/internal/apiserver/biz IBiz
 
 // ProviderSet 是一个 Wire 的 Provider 集合，用于声明依赖注入的规则.
 // 包含 NewBiz 构造函数，用于生成 biz 实例.

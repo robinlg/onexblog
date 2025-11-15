@@ -11,12 +11,13 @@ import (
 
 	"google.golang.org/grpc"
 
+	"github.com/robinlg/onexlib/pkg/token"
+
 	"github.com/robinlg/onexblog/internal/apiserver/model"
 	"github.com/robinlg/onexblog/internal/pkg/contextx"
 	"github.com/robinlg/onexblog/internal/pkg/errno"
 	"github.com/robinlg/onexblog/internal/pkg/known"
 	"github.com/robinlg/onexblog/internal/pkg/log"
-	"github.com/robinlg/onexlib/pkg/token"
 )
 
 // UserRetriever 用于根据用户名获取用户信息的接口.
@@ -32,14 +33,14 @@ func AuthnInterceptor(retriever UserRetriever) grpc.UnaryServerInterceptor {
 		userID, err := token.ParseRequest(ctx)
 		if err != nil {
 			log.Errorw("Failed to parse request", "err", err)
-			return nil, errno.ErrTokenInvalid.WithMessage(err.Error())
+			return nil, errno.ErrTokenInvalid.WithMessage("%v", err)
 		}
 
 		log.Debugw("Token parsing successful", "userID", userID)
 
 		user, err := retriever.GetUser(ctx, userID)
 		if err != nil {
-			return nil, errno.ErrUnauthenticated.WithMessage(err.Error())
+			return nil, errno.ErrUnauthenticated.WithMessage("%v", err)
 		}
 
 		// 将用户信息存入上下文

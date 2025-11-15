@@ -13,12 +13,13 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/robinlg/onexblog/examples/helper"
-	"github.com/robinlg/onexblog/internal/pkg/known"
-	apiv1 "github.com/robinlg/onexblog/pkg/api/apiserver/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/metadata"
+
+	"github.com/robinlg/onexblog/examples/helper"
+	"github.com/robinlg/onexblog/internal/pkg/known"
+	apiv1 "github.com/robinlg/onexblog/pkg/api/apiserver/v1"
 )
 
 var (
@@ -36,7 +37,7 @@ func main() {
 	}
 	defer conn.Close() // 确保连接在函数结束时关闭
 
-	client := apiv1.NewOnexBlogClient(conn) // 创建 MiniBlog 客户端
+	client := apiv1.NewOnexBlogClient(conn) // 创建 OnexBlog 客户端
 
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
@@ -72,7 +73,7 @@ func main() {
 	// 请求 CreatePost 接口
 	createPostRequest := &apiv1.CreatePostRequest{
 		Title:   "Hello, World",
-		Content: "This is a test blog of miniblog platform.",
+		Content: "This is a test blog of onexblog platform.",
 	}
 	createPostResponse, err := client.CreatePost(ctx, createPostRequest)
 	if err != nil {

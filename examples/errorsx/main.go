@@ -9,8 +9,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/robinlg/onexblog/internal/pkg/errno"
 	"github.com/robinlg/onexlib/pkg/errorsx"
+
+	"github.com/robinlg/onexblog/internal/pkg/errno"
 )
 
 func main() {

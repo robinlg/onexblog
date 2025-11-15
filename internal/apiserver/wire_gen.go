@@ -13,11 +13,12 @@
 package apiserver
 
 import (
+	auth "github.com/robinlg/onexlib/pkg/authz"
+
 	"github.com/robinlg/onexblog/internal/apiserver/biz"
 	"github.com/robinlg/onexblog/internal/apiserver/pkg/validation"
 	"github.com/robinlg/onexblog/internal/apiserver/store"
 	"github.com/robinlg/onexblog/internal/pkg/server"
-	"github.com/robinlg/onexlib/pkg/authz"
 )
 
 // Injectors from wire.go:

@@ -46,7 +46,7 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel() // 在函数结束时取消上下文，释放资源
 
-	// 调用 MiniBlog 的 Healthz 方法，检查服务健康状况
+	// 调用 OnexBlog 的 Healthz 方法，检查服务健康状况
 	resp, err := client.Healthz(ctx, nil) // 发起 gRPC 请求，Healthz 是一个简单的健康检查方法
 	if err != nil {
 		log.Fatalf("Failed to call healthz: %v", err) // 如果调用失败，记录错误并退出程序

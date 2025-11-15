@@ -16,14 +16,15 @@ import (
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
+	authn "github.com/robinlg/onexlib/pkg/authn"
+	authz "github.com/robinlg/onexlib/pkg/authz"
+	"github.com/robinlg/onexlib/pkg/token"
+
 	"github.com/robinlg/onexblog/internal/pkg/contextx"
 	"github.com/robinlg/onexblog/internal/pkg/conversion"
 	"github.com/robinlg/onexblog/internal/pkg/errno"
 	"github.com/robinlg/onexblog/internal/pkg/known"
 	"github.com/robinlg/onexblog/internal/pkg/log"
-	authn "github.com/robinlg/onexlib/pkg/authn"
-	authz "github.com/robinlg/onexlib/pkg/authz"
-	"github.com/robinlg/onexlib/pkg/token"
 
 	"github.com/robinlg/onexblog/internal/apiserver/model"
 	"github.com/robinlg/onexblog/internal/apiserver/store"
@@ -124,7 +125,7 @@ func (b *userBiz) Create(ctx context.Context, rq *apiv1.CreateUserRequest) (*api
 
 	if _, err := b.authz.AddGroupingPolicy(userM.UserID, known.RoleUser); err != nil {
 		log.W(ctx).Errorw("Failed to add grouping policy for user", "user", userM.UserID, "role", known.RoleUser)
-		return nil, errno.ErrAddRole.WithMessage(err.Error())
+		return nil, errno.ErrAddRole.WithMessage("%v", err)
 	}
 
 	return &apiv1.CreateUserResponse{UserID: userM.UserID}, nil
@@ -167,7 +168,7 @@ func (b *userBiz) Delete(ctx context.Context, rq *apiv1.DeleteUserRequest) (*api
 
 	if _, err := b.authz.RemoveGroupingPolicy(rq.GetUserID(), known.RoleUser); err != nil {
 		log.W(ctx).Errorw("Failed to remove grouping policy for user", "user", rq.GetUserID(), "role", known.RoleUser)
-		return nil, errno.ErrRemoveRole.WithMessage(err.Error())
+		return nil, errno.ErrRemoveRole.WithMessage("%v", err)
 	}
 
 	return &apiv1.DeleteUserResponse{}, nil

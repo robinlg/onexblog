@@ -12,12 +12,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/robinlg/onexlib/pkg/core"
 
+	"github.com/robinlg/onexlib/pkg/token"
+
 	"github.com/robinlg/onexblog/internal/apiserver/model"
 	"github.com/robinlg/onexblog/internal/pkg/contextx"
 	"github.com/robinlg/onexblog/internal/pkg/errno"
 	"github.com/robinlg/onexblog/internal/pkg/known"
 	"github.com/robinlg/onexblog/internal/pkg/log"
-	"github.com/robinlg/onexlib/pkg/token"
 )
 
 // UserRetriever 用于根据用户名获取用户的接口.
@@ -32,7 +33,7 @@ func AuthnMiddleware(retriever UserRetriever) gin.HandlerFunc {
 		// 解析 JWT Token
 		userID, err := token.ParseRequest(c)
 		if err != nil {
-			core.WriteResponse(c, nil, errno.ErrTokenInvalid.WithMessage(err.Error()))
+			core.WriteResponse(c, nil, errno.ErrTokenInvalid.WithMessage("%v", err))
 			c.Abort()
 			return
 		}
@@ -41,7 +42,7 @@ func AuthnMiddleware(retriever UserRetriever) gin.HandlerFunc {
 
 		user, err := retriever.GetUser(c, userID)
 		if err != nil {
-			core.WriteResponse(c, nil, errno.ErrUnauthenticated.WithMessage(err.Error()))
+			core.WriteResponse(c, nil, errno.ErrUnauthenticated.WithMessage("%v", err))
 			c.Abort()
 			return
 		}
