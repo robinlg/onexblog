@@ -12,7 +12,7 @@ import (
 
 	"github.com/robinlg/onexblog/cmd/ob-apiserver/app/options"
 	"github.com/robinlg/onexblog/internal/pkg/log"
-	"github.com/robinlg/onexblog/pkg/version"
+	"github.com/robinlg/onexlib/pkg/version"
 )
 
 var configFile string // 配置文件路径

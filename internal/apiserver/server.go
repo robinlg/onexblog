@@ -14,9 +14,9 @@ import (
 	"time"
 
 	"github.com/robinlg/onexblog/internal/pkg/known"
-	"github.com/robinlg/onexblog/pkg/token"
 	genericoptions "github.com/robinlg/onexlib/pkg/options"
 	"github.com/robinlg/onexlib/pkg/store/where"
+	"github.com/robinlg/onexlib/pkg/token"
 	"gorm.io/gorm"
 
 	"github.com/robinlg/onexblog/internal/apiserver/biz"
@@ -27,7 +27,7 @@ import (
 	"github.com/robinlg/onexblog/internal/pkg/log"
 	mw "github.com/robinlg/onexblog/internal/pkg/middleware/grpc"
 	"github.com/robinlg/onexblog/internal/pkg/server"
-	"github.com/robinlg/onexblog/pkg/auth"
+	"github.com/robinlg/onexlib/pkg/authz"
 )
 
 const (

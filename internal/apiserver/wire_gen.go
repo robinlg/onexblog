@@ -17,7 +17,7 @@ import (
 	"github.com/robinlg/onexblog/internal/apiserver/pkg/validation"
 	"github.com/robinlg/onexblog/internal/apiserver/store"
 	"github.com/robinlg/onexblog/internal/pkg/server"
-	"github.com/robinlg/onexblog/pkg/auth"
+	"github.com/robinlg/onexlib/pkg/authz"
 )
 
 // Injectors from wire.go:

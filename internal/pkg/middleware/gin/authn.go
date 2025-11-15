@@ -17,7 +17,7 @@ import (
 	"github.com/robinlg/onexblog/internal/pkg/errno"
 	"github.com/robinlg/onexblog/internal/pkg/known"
 	"github.com/robinlg/onexblog/internal/pkg/log"
-	"github.com/robinlg/onexblog/pkg/token"
+	"github.com/robinlg/onexlib/pkg/token"
 )
 
 // UserRetriever 用于根据用户名获取用户的接口.

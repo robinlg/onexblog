@@ -21,8 +21,9 @@ import (
 	"github.com/robinlg/onexblog/internal/pkg/errno"
 	"github.com/robinlg/onexblog/internal/pkg/known"
 	"github.com/robinlg/onexblog/internal/pkg/log"
-	"github.com/robinlg/onexblog/pkg/auth"
-	"github.com/robinlg/onexblog/pkg/token"
+	authn "github.com/robinlg/onexlib/pkg/authn"
+	authz "github.com/robinlg/onexlib/pkg/authz"
+	"github.com/robinlg/onexlib/pkg/token"
 
 	"github.com/robinlg/onexblog/internal/apiserver/model"
 	"github.com/robinlg/onexblog/internal/apiserver/store"
@@ -51,13 +52,13 @@ type UserExpansion interface {
 // userBiz 是 UserBiz 接口的实现.
 type userBiz struct {
 	store store.IStore
-	authz *auth.Authz
+	authz *authz.Authz
 }
 
 // 确保 userBiz 实现了 UserBiz 接口.
 var _ UserBiz = (*userBiz)(nil)
 
-func New(store store.IStore, authz *auth.Authz) *userBiz {
+func New(store store.IStore, authz *authz.Authz) *userBiz {
 	return &userBiz{store: store, authz: authz}
 }
 
@@ -71,7 +72,7 @@ func (b *userBiz) Login(ctx context.Context, rq *apiv1.LoginRequest) (*apiv1.Log
 	}
 
 	// 对比传入的明文密码和数据库中已加密过的密码是否匹配
-	if err := auth.Compare(userM.Password, rq.GetPassword()); err != nil {
+	if err := authn.Compare(userM.Password, rq.GetPassword()); err != nil {
 		log.W(ctx).Errorw("Failed to compare password", "err", err)
 		return nil, errno.ErrPasswordInvalid
 	}
@@ -99,12 +100,12 @@ func (b *userBiz) ChangePassword(ctx context.Context, rq *apiv1.ChangePasswordRe
 		return nil, err
 	}
 
-	if err := auth.Compare(userM.Password, rq.GetOldPassword()); err != nil {
+	if err := authn.Compare(userM.Password, rq.GetOldPassword()); err != nil {
 		log.W(ctx).Errorw("Failed to compare password", "err", err)
 		return nil, errno.ErrPasswordInvalid
 	}
 
-	userM.Password, _ = auth.Encrypt(rq.GetNewPassword())
+	userM.Password, _ = authn.Encrypt(rq.GetNewPassword())
 	if err := b.store.User().Update(ctx, userM); err != nil {
 		return nil, err
 	}
