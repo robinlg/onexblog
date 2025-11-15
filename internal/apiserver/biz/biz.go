@@ -7,6 +7,7 @@
 package biz
 
 import (
+	"github.com/google/wire"
 	postv1 "github.com/robinlg/onexblog/internal/apiserver/biz/v1/post"
 	userv1 "github.com/robinlg/onexblog/internal/apiserver/biz/v1/user"
 	"github.com/robinlg/onexblog/internal/apiserver/store"
@@ -14,6 +15,12 @@ import (
 )
 
 //go:generate mockgen -destination mock_biz.go -package biz github.com/onexstack/miniblog/internal/apiserver/biz IBiz
+
+// ProviderSet 是一个 Wire 的 Provider 集合，用于声明依赖注入的规则.
+// 包含 NewBiz 构造函数，用于生成 biz 实例.
+// wire.Bind 用于将接口 IBiz 与具体实现 *biz 绑定，
+// 这样依赖 IBiz 的地方会自动注入 *biz 实例.
+var ProviderSet = wire.NewSet(NewBiz, wire.Bind(new(IBiz), new(*biz)))
 
 // IBiz 定义了业务层需要实现的方法.
 type IBiz interface {
