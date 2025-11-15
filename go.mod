@@ -16,7 +16,7 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.0
 	github.com/jinzhu/copier v0.4.0
 	github.com/onexstack/protoc-gen-defaults v0.0.2
-	github.com/robinlg/onexlib v0.0.0-20251115023916-209cff9add79
+	github.com/robinlg/onexlib v0.0.0-20251115070432-25b70658cafa
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.19.0
