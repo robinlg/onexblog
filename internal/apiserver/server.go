@@ -21,6 +21,7 @@ import (
 	"github.com/robinlg/onexblog/internal/pkg/log"
 	mw "github.com/robinlg/onexblog/internal/pkg/middleware/grpc"
 	"github.com/robinlg/onexblog/internal/pkg/server"
+	"github.com/robinlg/onexblog/pkg/auth"
 	genericoptions "github.com/robinlg/onexlib/pkg/options"
 	"github.com/robinlg/onexlib/pkg/store/where"
 	"gorm.io/gorm"
@@ -69,6 +70,7 @@ type ServerConfig struct {
 	biz       biz.IBiz
 	val       *validation.Validator
 	retriever mw.UserRetriever
+	authz     *auth.Authz
 }
 
 // NewUnionServer 根据配置创建联合服务器.
@@ -141,11 +143,18 @@ func (cfg *Config) NewServerConfig() (*ServerConfig, error) {
 	}
 	store := store.NewStore(db)
 
+	// 初始化权限认证模块
+	authz, err := auth.NewAuthz(store.DB(context.TODO()))
+	if err != nil {
+		return nil, err
+	}
+
 	return &ServerConfig{
 		cfg:       cfg,
-		biz:       biz.NewBiz(store),
+		biz:       biz.NewBiz(store, authz),
 		val:       validation.New(store),
 		retriever: &UserRetriever{store: store},
+		authz:     authz,
 	}, nil
 }
 

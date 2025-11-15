@@ -42,4 +42,10 @@ var (
 
 	// ErrDBWrite 表示数据库写入失败.
 	ErrDBWrite = &errorsx.ErrorX{Code: http.StatusInternalServerError, Reason: "InternalError.DBWrite", Message: "Database write failure."}
+
+	// ErrAddRole 表示在添加角色时发生错误.
+	ErrAddRole = &errorsx.ErrorX{Code: http.StatusInternalServerError, Reason: "InternalError.AddRole", Message: "Error occurred while adding the role."}
+
+	// ErrRemoveRole 表示在删除角色时发生错误.
+	ErrRemoveRole = &errorsx.ErrorX{Code: http.StatusInternalServerError, Reason: "InternalError.RemoveRole", Message: "Error occurred while removing the role."}
 )
