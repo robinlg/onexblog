@@ -11,10 +11,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/robinlg/onexblog/internal/pkg/contextx"
-	"github.com/robinlg/onexblog/internal/pkg/known"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
+
+	"github.com/robinlg/onexblog/internal/pkg/contextx"
+	"github.com/robinlg/onexblog/internal/pkg/known"
 )
 
 // Logger 定义了 onexlog 项目的日志接口
@@ -53,11 +54,11 @@ var _ Logger = (*zapLogger)(nil)
 var (
 	mu sync.Mutex
 
-	// std 定义了默认的全局 Logger
+	// std 定义了默认的全局 Logger.
 	std = New(NewOptions())
 )
 
-// Init 初始化全局的日志对象
+// Init 初始化全局的日志对象.
 func Init(opts *Options) {
 	// 因为会给全局变量 std 赋值，所以这里对 std 变量加锁，防止出现并发问题
 	mu.Lock()

@@ -11,9 +11,10 @@ import (
 
 	validation "github.com/go-ozzo/ozzo-validation/v4"
 	"github.com/go-ozzo/ozzo-validation/v4/is"
+	genericvalidation "github.com/robinlg/onexlib/pkg/validation"
+
 	"github.com/robinlg/onexblog/internal/pkg/errno"
 	apiv1 "github.com/robinlg/onexblog/pkg/api/apiserver/v1"
-	genericvalidation "github.com/robinlg/onexlib/pkg/validation"
 )
 
 // Validate 校验字段的有效性.

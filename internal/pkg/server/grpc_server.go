@@ -10,16 +10,17 @@ import (
 	"context"
 	"net"
 
-	"github.com/robinlg/onexblog/internal/pkg/log"
 	genericoptions "github.com/robinlg/onexlib/pkg/options"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/grpc/reflection"
+
+	"github.com/robinlg/onexblog/internal/pkg/log"
 )
 
-// GRPCServer 代表一个 GRPC 服务器
+// GRPCServer 代表一个 GRPC 服务器.
 type GRPCServer struct {
 	srv *grpc.Server
 	lis net.Listener

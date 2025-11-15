@@ -9,10 +9,11 @@ package validation
 import (
 	"context"
 
+	genericvalidation "github.com/robinlg/onexlib/pkg/validation"
+
 	"github.com/robinlg/onexblog/internal/pkg/contextx"
 	"github.com/robinlg/onexblog/internal/pkg/errno"
 	apiv1 "github.com/robinlg/onexblog/pkg/api/apiserver/v1"
-	genericvalidation "github.com/robinlg/onexlib/pkg/validation"
 )
 
 func (v *Validator) ValidateUserRules() genericvalidation.Rules {

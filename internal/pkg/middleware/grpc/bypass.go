@@ -9,11 +9,12 @@ package grpc
 import (
 	"context"
 
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/metadata"
+
 	"github.com/robinlg/onexblog/internal/pkg/contextx"
 	"github.com/robinlg/onexblog/internal/pkg/known"
 	"github.com/robinlg/onexblog/internal/pkg/log"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/metadata"
 )
 
 // AuthnBypasswInterceptor 是一个 gRPC 拦截器，模拟所有请求都通过认证。

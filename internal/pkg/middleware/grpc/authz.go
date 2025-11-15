@@ -9,10 +9,11 @@ package grpc
 import (
 	"context"
 
+	"google.golang.org/grpc"
+
 	"github.com/robinlg/onexblog/internal/pkg/contextx"
 	"github.com/robinlg/onexblog/internal/pkg/errno"
 	"github.com/robinlg/onexblog/internal/pkg/log"
-	"google.golang.org/grpc"
 )
 
 // Authorizer 用于定义授权接口的实现.

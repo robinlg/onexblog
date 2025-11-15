@@ -9,13 +9,14 @@ package grpc
 import (
 	"context"
 
+	"google.golang.org/grpc"
+
 	"github.com/robinlg/onexblog/internal/apiserver/model"
 	"github.com/robinlg/onexblog/internal/pkg/contextx"
 	"github.com/robinlg/onexblog/internal/pkg/errno"
 	"github.com/robinlg/onexblog/internal/pkg/known"
 	"github.com/robinlg/onexblog/internal/pkg/log"
 	"github.com/robinlg/onexblog/pkg/token"
-	"google.golang.org/grpc"
 )
 
 // UserRetriever 用于根据用户名获取用户信息的接口.

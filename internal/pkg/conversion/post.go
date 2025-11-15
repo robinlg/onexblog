@@ -7,9 +7,10 @@
 package conversion
 
 import (
+	"github.com/robinlg/onexlib/pkg/core"
+
 	"github.com/robinlg/onexblog/internal/apiserver/model"
 	apiv1 "github.com/robinlg/onexblog/pkg/api/apiserver/v1"
-	"github.com/robinlg/onexlib/pkg/core"
 )
 
 // PostModelToPostV1 将模型层的 PostM（博客模型对象）转换为 Protobuf 层的 Post（v1 博客对象）.
